@@ -16,30 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val analogClockView = findViewById<AnalogClockView>(R.id.analogClockView)
-        val timeTextView = findViewById<TextView>(R.id.timeTextView)
-
-        // Update the time every second
-        val handler = Handler(Looper.getMainLooper())
-        handler.post(object : Runnable {
-            override fun run() {
-                // Get current time
-                val currentTime = getCurrentTime()
-                // Update TextView
-                timeTextView.text = "Time- "+currentTime
-                // Redraw the analog clock
-                analogClockView.invalidate()
-                // Call this runnable again after 1 second
-                handler.postDelayed(this, 1000)
-            }
-        })
-    }
-
-    private fun getCurrentTime(): String {
-        val dateFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
-        val currentTime = Date()
-        return dateFormat.format(currentTime)
-    }
 }
 
 
